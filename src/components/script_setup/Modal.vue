@@ -1,9 +1,13 @@
 <script setup>
-import { ref } from "vue"
+import { ref, defineExpose } from "vue"
 
 const isOpen = ref(false)
 const open = () => isOpen.value = true
 const close = () => isOpen.value = false
+
+defineExpose({
+  open, close
+})
 
 </script>
 

@@ -1,12 +1,15 @@
 <script setup>
 import { ref } from "vue";
-import Modal from "./components/script_setup/Modal.vue";
+// import Modal from "./components/script_setup/Modal.vue";
+// import Modal from "./components/options_api/Modal.vue";
+import Modal from "./components/jsx/Modal.jsx";
 
 const modal = ref(null);
 </script>
 
 <template>
-  <Modal />
+  <button @click="modal.open()">Outside open modal</button>
+  <Modal ref="modal" />
 </template>
 
 <style scoped>

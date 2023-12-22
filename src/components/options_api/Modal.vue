@@ -12,7 +12,8 @@ export default {
     close() {
       this.isOpen = false;
     }
-  }
+  },
+  expose: ["open", "close"]
 }
 </script>
 
