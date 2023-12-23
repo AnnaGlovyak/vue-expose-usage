@@ -9,25 +9,18 @@ import MenuItems from "./components/menu/MenuItems.vue";
 import MenuItem from "./components/menu/MenuItem.vue";
 
 const modal = ref(null);
+const selected = ref("");
+const menuItems = ["Edit", "Update", "Add"]
 </script>
 
 <template>
   <button @click="modal.open()">Outside open modal</button>
   <Modal ref="modal" />
-  <Menu v-slot="{open, close}">
+  <Menu v-model="selected">
     <MenuButton>{{ 'Actions' }}</MenuButton>
-    <MenuItems>
-      <MenuItem v-slot="{active}">
-        <span :class="{active}">Edit</span>
-      </MenuItem>
-      <MenuItem v-slot="{active}">
-        <span :class="{active}">Update</span>
-      </MenuItem>
-      <MenuItem v-slot="{active}">
-        <span :class="{active}">Add</span>
-      </MenuItem>
-      <MenuItem v-slot="{active}">
-        <span :class="{active}" @click="close">Close</span>
+    <MenuItems v-for="item in menuItems" :key="item">
+      <MenuItem>
+        <span :class="{active: item === selected}">{{ item }}</span>
       </MenuItem>
     </MenuItems>
   </Menu>
