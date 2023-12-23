@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     vue({
       script: {
-        defineModel: true,
+        defineModel: true,  // experimentsl feature for v-model
       },
     }),
     vueJsx(),
