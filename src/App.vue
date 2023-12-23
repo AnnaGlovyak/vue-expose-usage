@@ -3,6 +3,10 @@ import { ref } from "vue";
 // import Modal from "./components/script_setup/Modal.vue";
 // import Modal from "./components/options_api/Modal.vue";
 import Modal from "./components/jsx/Modal.jsx";
+import Menu from "./components/menu/Menu.vue";
+import MenuButton from "./components/menu/MenuButton.vue";
+import MenuItems from "./components/menu/MenuItems.vue";
+import MenuItem from "./components/menu/MenuItem.vue";
 
 const modal = ref(null);
 </script>
@@ -10,6 +14,23 @@ const modal = ref(null);
 <template>
   <button @click="modal.open()">Outside open modal</button>
   <Modal ref="modal" />
+  <Menu v-slot="{open, close}">
+    <MenuButton>{{ 'Actions' }}</MenuButton>
+    <MenuItems>
+      <MenuItem v-slot="{active}">
+        <span :class="{active}">Edit</span>
+      </MenuItem>
+      <MenuItem v-slot="{active}">
+        <span :class="{active}">Update</span>
+      </MenuItem>
+      <MenuItem v-slot="{active}">
+        <span :class="{active}">Add</span>
+      </MenuItem>
+      <MenuItem v-slot="{active}">
+        <span :class="{active}" @click="close">Close</span>
+      </MenuItem>
+    </MenuItems>
+  </Menu>
 </template>
 
 <style scoped>
